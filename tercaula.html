@@ -1,95 +1,141 @@
+<!-- PÃ³s GraduaÃ§Ã£o Internet das Coisas - CEFET-MG
+	Disciplina: ProgramaÃ§Ã£o para Sistemas de ComputaÃ§Ã£o
+	Exemplo prÃ¡tico de Bootstrap - AngularJs - Rest - Plotly
+ -->
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-* {
-  box-sizing: border-box;
-}
-.menu {
-  float: left;
-  width: 20%;
-}
-.menuitem {
-  padding: 8px;
-  margin-top: 7px;
-  border-bottom: 1px solid #f1f1f1;
-}
-.main {
-  float: left;
-  width: 60%;
-  padding: 0 20px;
-  overflow: hidden;
-}
-.right {
-  background-color: lightblue;
-  float: left;
-  width: 20%;
-  padding: 10px 15px;
-  margin-top: 7px;
-}
+<title>IoT - CEFET-MG</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-@media only screen and (max-width:800px) {
-  /* For tablets: */
-  .main {
-    width: 80%;
-    padding: 0;
-  }
-  .right {
-    width: 100%;
-  }
-}
-@media only screen and (max-width:500px) {
-  /* For mobile phones: */
-  .menu, .main, .right {
-    width: 100%;
-  }
-}
-</style>
+<!-- AnglularJs -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- Plotly -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script>
+	var url = 'http://35.199.76.183:3000/temperatura';
+	angular.module('iot', []).controller(
+			'sensor',
+			function($scope, $http) {
+				$scope.GetData = function() {
+					$http.get(url).then(function(response) {
+						$scope.sensor = response.data;
+						$scope.Plot(response.data);
+					});
+
+				};
+
+				$scope.SendData = function() {
+					var d = new Date();
+					var data = {
+						time : d.getFullYear() + "-"
+								+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+								+ ("00" + (d.getDate())).slice(-2) + " "
+								+ d.toLocaleTimeString(),
+						valor : $scope.valor
+					};
+
+					$http.post(url, data).then(function(response) {
+						$scope.showSuccess = true;
+						$scope.GetData();
+					}, function(response) {
+						$scope.showError = true;
+					});
+				};
+
+				$scope.Plot = function(data) {
+					var x = [], y = [];
+
+					data.forEach(function(item) {
+						x.push(item.time);
+						y.push(item.valor);
+					});
+
+					var charData = [ {
+						x : x,
+						y : y,
+						mode : 'lines+markers',
+						line : {
+							color : '#80CAF6'
+						}
+					} ];
+
+					var chart = document.getElementById('chart');
+
+					Plotly.newPlot(chart, charData);
+				};
+
+			});
+</script>
 </head>
-<body style="font-family:Verdana;">
 
-<div style="background-color:#f1f1f1;padding:15px;">
-  <h1>Planta industrial</h1>
-</div>
-
-<div style="overflow:auto">
-  <div class="menu">
-    <div class="menuitem">O motor</div>
-    <div class="menuitem">O tanque</div>
-    <div class="menuitem">O soprador</div>
-    <div class="menuitem">O secador</div>
-  </div>
-
-  <div class="main">
-    <h2>Supervisório</h2>
-    <p>Exite hoje a necessidade de se montar pantas supervisórias da industria com forma de se poder aumetnar o controle do sistema de produção.</p>
-    <img src="img_pulpit.jpg" style="width:100%">
-  </div>
-
-  <div class="right">
-    <h2>O que é?</h2>
-    <p>É uma inteface máquina humano.</p>
-    <h2>Onde se aplica?</h2>
-    <p>Em todos os seguimentos da industria e tercerio setor.</p>
-    <h2>Custos?</h2>
-    <p>São baixos quando comparado ao custo benefício</p>
-  </div>
-</div>
-
-<div style="background-color:#f1f1f1;text-align:center;padding:10px;margin-top:7px;font-size:12px;">Essa é apenas uma pequena apresentação do seu potencial.</div>
-<h2>Pode ser usado com sensores e atuadores?</h2>
-
-<p>Não existe impedimento.</p>
-
-<p>E o mercado é gigante para a incorporação do IoT.</p>
-
-<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Clique para acionar</button>
-
-<img id="myImage" src="pic_bulboff.gif" style="width:100px">
-
-<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Clique para desligar</button>
-
-
+<body ng-app="iot" ng-controller="sensor" ng-init="GetData()">
+	<div class="container">
+		<h2 align=center>
+			<img
+				src="http://www.leopoldina.cefetmg.br/wp-content/uploads/sites/6/2016/11/logotipo_curso_internet_coisas_cor.png"
+				height="10%" width="10%"> <br>Exemplo Bootstrap -
+			AngularJs - Rest - Plotly
+		</h2>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="valor">Valor:</label> <input type="number"
+						class="form-control" name="valor" ng-model="valor"
+						placeholder="informe o valor" required />
+				</div>
+				<button type="button" class="btn btn-primary" ng-click="SendData()">Enviar</button>
+				<p></p>
+				<div data-ng-show="showSuccess" class="alert alert-success">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Enviado
+						com Sucesso!</strong>
+				</div>
+				<div data-ng-show="showError" class="alert alert-danger">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Erro
+						ao Enviar!</strong>
+				</div>
+				<p></p>
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>id</th>
+							<th>time</th>
+							<th>valor</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="s in sensor">
+							<td>{{s.id}}</td>
+							<td>{{s.time}}</td>
+							<td>{{s.valor}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-sm-8">
+				<div id="chart" class="responsive-plot"></div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
