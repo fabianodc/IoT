@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float: left;
+  width: 20%;
+}
+.menuitem {
+  padding: 8px;
+  margin-top: 7px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.right {
+  background-color: lightblue;
+  float: left;
+  width: 20%;
+  padding: 10px 15px;
+  margin-top: 7px;
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;">
+
+<div style="background-color:#f1f1f1;padding:15px;">
+  <h1>Planta industrial</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <div class="menuitem">O motor</div>
+    <div class="menuitem">O tanque</div>
+    <div class="menuitem">O soprador</div>
+    <div class="menuitem">O secador</div>
+  </div>
+
+  <div class="main">
+    <h2>Supervisório</h2>
+    <p>Exite hoje a necessidade de se montar pantas supervisórias da industria com forma de se poder aumetnar o controle do sistema de produção.</p>
+    <img src="img_pulpit.jpg" style="width:100%">
+  </div>
+
+  <div class="right">
+    <h2>O que é?</h2>
+    <p>É uma inteface máquina humano.</p>
+    <h2>Onde se aplica?</h2>
+    <p>Em todos os seguimentos da industria e tercerio setor.</p>
+    <h2>Custos?</h2>
+    <p>São baixos quando comparado ao custo benefício</p>
+  </div>
+</div>
+
+<div style="background-color:#f1f1f1;text-align:center;padding:10px;margin-top:7px;font-size:12px;">Essa é apenas uma pequena apresentação do seu potencial.</div>
+<h2>Pode ser usado com sensores e atuadores?</h2>
+
+<p>Não existe impedimento.</p>
+
+<p>E o mercado é gigante para a incorporação do IoT.</p>
+
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Clique para acionar</button>
+
+<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Clique para desligar</button>
+
+
+</body>
+</html>
