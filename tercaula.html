@@ -53,6 +53,7 @@
 								+ ("00" + (d.getDate())).slice(-2) + " "
 								+ d.toLocaleTimeString(),
 						valor : $scope.valor
+						valor1 : $scope.valor1
 					};
 
 					$http.post(url, data).then(function(response) {
@@ -104,6 +105,9 @@
 				<div class="form-group">
 					<label for="valor">Valor:</label> <input type="number"
 						class="form-control" name="valor" ng-model="valor"
+						placeholder="informe o valor" required />
+					<label for="valor1">Valor:</label> <input type="number"
+						class="form-control" name="valor1" ng-model="valor1"
 						placeholder="informe o valor" required />
 				</div>
 				<button type="button" class="btn btn-primary" ng-click="SendData()">Enviar</button>
