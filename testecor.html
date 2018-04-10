@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float: left;
+  width: 20%;
+}
+.menuitem {
+  padding: 8px;
+  margin-top: 7px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.right {
+  background-color: lightblue;
+  float: left;
+  width: 20%;
+  padding: 10px 15px;
+  margin-top: 7px;
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;">
+
+<div style="background-color:#f1f1f1;padding:15px;">
+  <h1>Planta industrial</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <div class="menuitem">O Motor</div>
+    <div class="menuitem">O Tanque</div>
+    <div class="menuitem">O Soprador</div>
+    <div class="menuitem">O Secador</div>
+  </div>
+
+  <div class="main">
+    <h2>Supervis�rio</h2>
+    <p>Exite hoje a necessidade de se montar pantas supervis�rias da industria com forma de se poder aumetnar o controle do sistema de produ��o.</p>
+    <img src="img_pulpit.jpg" style="width:100%">
+  </div>
+
+  <div class="right">
+    <h2>O que �?</h2>
+    <p>� uma inteface m�quina humano.</p>
+    <h2>Onde se aplica?</h2>
+    <p>Em todos os seguimentos da industria e tercerio setor.</p>
+    <h2>Custos?</h2>
+    <p>S�o baixos quando comparado ao custo benef�cio</p>
+  </div>
+</div>
+
+<div style="background-color:#f1f1f1;text-align:center;padding:10px;margin-top:7px;font-size:12px;">Essa � apenas uma pequena apresenta��o do seu potencial.</div>
+<h2>Pode ser usado com sensores e atuadores?</h2>
+
+<p>N�o existe impedimento.</p>
+
+<p>E o mercado � gigante para a incorpora��o do IoT.</p>
+
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Clique para acionar</button>
+
+<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Clique para desligar</button>
+
+  <title>Estação Meteriologica</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Situação em Leopoldina</h1>
+  <p>Pagina responsiva!</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Coluna 1</h3>
+      <p>Temperatura</p>
+      <p>Dados diário de temperatura</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Coluna 2</h3>
+      <p>Humidade</p>
+      <p>Dados diário de humidade</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Coluna 3</h3>        
+      <p>Pressão</p>
+      <p>Dados diário de pressão</p>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
