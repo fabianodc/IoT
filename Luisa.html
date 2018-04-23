@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float: left;
+  width: 20%;
+}
+.menuitem {
+  padding: 8px;
+  margin-top: 7px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.right {
+  background-color: lightblue;
+  float: left;
+  width: 20%;
+  padding: 10px 15px;
+  margin-top: 7px;
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;">
+
+<div style="background-color:#f1f1f1;padding:15px;">
+  <h1>Luísa Micelli - Meus 7 anos</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <div class="menuitem">Festa Neon</div>
+    <div class="menuitem">Clube Moinho</div>
+    <div class="menuitem">Começa às 17:00h</div>
+    <div class="menuitem">Venha!!!</div>
+  </div>
+
+</head>
+<body>
+
+<div class="container">
+  <h2>A festa será no domingo</h2>
+  <p>O tema é festa Neon</p>
+  
+  <h2>Meu Convite</h2>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bKWSP-_UlF4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+  <h1>Eu e o Mateus ensaiando para a festa</h1>
+<img src="img_luisa.jpg" alt="Luisa" style="width:100%">
+  <h1>Demonstração da segurança da Luz Negra</h1>
+<img src="img_uva.jpg" alt="Luz Negra" style="width:100%">
+
+</div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <h2> </h2>
+      
+      <p>ATENÇÃO: A Radiação ultravioleta que faz mal está entre UVB e UVA e é a radiação utilizada em câmaras de bronzeamento e pode causar envelhecimento da pele e risco de câncer. Só que no caso da LUZ NEGRA, a emissão é de UVA próxima ao espectro visível, o que não causa mal a saúde.  Radiações Não ionizantes da NR 15 no item 3, do Anexo 7 – Portaria 3214/78 do MTE, diz o seguinte: As atividades ou operações que exponham os trabalhadores às radiações da luz negra (ultravioleta na faixa – 400- 320 nanômetros) não serão consideradas insalubres. http://www.expedicaovida.com.br/como-funciona-a-luz-negra-ela-faz-mal-a-saude/</p>
+
+  <form>
+    <div class="form-group">
+      <label for="usr">Nome:</label>
+      <input type="text" class="form-control" id="usr">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Idade:</label>
+      <input type="password" class="form-control" id="pwd">
+    </div>
+  </form>
+<div ng-app="">
+ 
+<p>Coloque seu nome:</p>
+<p>Nome : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+<h1>Oi {{name}}</h1>
+<h1>te espero lá!!!</h1>
+<h1>Beijos</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
