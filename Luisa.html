@@ -1,13 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Convite da Luisa</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<script> 
+  var url = 'http://35.229.57.208:3000/temperatura';//criou a variável url
+  angular.module('iot', []).controller(//chama o modulo angular iot que controla sensor
+      'sensor',//
+      function($scope, $http) {//cria um função scope e http
+        $scope.GetData = function() {//scope recebe dados é igual a função que...
+          $http.get(url).then(function(response) {//recebe o que está na url
+            $scope.sensor = response.data;//sensor recebe data
+            //tirei o plotar
+          });
+
+        };
+
+       // dentro do script funciona java - Recebe os valores do mês  
+
+        $scope.SendData = function() {//envio de dados
+          var d = new Date();//cria d classe de new date
+          var data = {//cria data 
+            time : d.getFullYear() + "-"//recebe da bios o ano completo
+                + ("00" + (d.getMonth() + 1)).slice(-2) + "-"//acrescenta mês 
+                + ("00" + (d.getDate())).slice(-2) + " "//acrescenta dia
+                + d.toLocaleTimeString(),//acrescenta hora
+            valor : $scope.valor // acrescenta o valor da temperatura
+          };
+
+          //começa a escrever 
+
+          $http.post(url, data).then(function(response) { // escreve na url a data do dia
+            $scope.showSuccess = true; // teve sucesso - mensagem como verdadeira
+            $scope.GetData();//envia a data na configuração acima
+          }, function(response) {//ajusta-se ao formato da tela
+            $scope.showError = true;//não teve sucesso - envia mensagem de erro
+          });
+        };
+
+        
+
+      });
+</script>
+
 <style>
 * {
   box-sizing: border-box;
@@ -71,7 +114,7 @@
 <body>
 
 <div class="container">
-  <h2>A festa será no domingo</h2>
+  <h2>A festa será no domingo, dia 6 de maio 2018</h2>
   <p>O tema é festa Neon</p>
   
   <h2>Meu Convite</h2>
@@ -84,6 +127,11 @@
     <div class="col-md-8">
   <h1>Eu e o Mateus ensaiando para a festa</h1>
 <img src="img_luisa.jpg" alt="Luisa" style="width:100%">
+<p>   Mateus e Luisa 
+</p>
+<h1>-</h1>
+<h1>-</h1>
+<h1>-</h1>
   <h1>Demonstração da segurança da Luz Negra</h1>
 <img src="img_uva.jpg" alt="Luz Negra" style="width:100%">
 
@@ -92,29 +140,54 @@
 
   <div class="row">
     <div class="col-md-4">
+ 
+<h1> -
+</h1>
+
+<h1>Conto com sua presença, mas se não puder comparecer, nos comunique, por favor. 
+É só deixar seu nome aqui em baixo e clicar em enviar.</h1>
+<!-- Os parâmetros criados acima são recebidos aqui -->
+<body ng-app="iot" ng-controller="sensor" ng-init="GetData()">
+  <!-- Criar container -->
+  <div class="container">
+    <!-- alinhamento ao centro -->
+    <div class="row">
+      <!-- Criação de 4 colunas -->
+      <div class="col-sm-4">
+        <!-- Criação de formulário -->
+        <div class="form-group">
+          <!-- Criação de camadas -->
+          <label for="valor">Nome:</label> <input type="name"
+            class="form-control" name="valor" ng-model="valor"
+            placeholder="informe o nome somente se não puder comparecer" required />
+            <!-- trocar o termo type por name -->
+            <!-- criação do botão enviando para o SendData-->
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="SendData()">Enviar</button>
+        <p></p>
+        <!-- se conseguir enviar - afirmar sucesso -->
+        <div data-ng-show="showSuccess" class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Enviado
+            com Sucesso!</strong>
+        </div>
+        <!-- se não conseguir enviar - afirmar erro -->
+        <div data-ng-show="showError" class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Erro
+            ao Enviar!</strong>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<h2> Caso prefira ou necessite, pode ligar ou mandar um Whatsapp para o número:(32)9 8812 3456.
+   Katrine</h2>
+<h1> -</h1>
+<h1> -</h1>
+
       <h2> </h2>
       
       <p>ATENÇÃO: A Radiação ultravioleta que faz mal está entre UVB e UVA e é a radiação utilizada em câmaras de bronzeamento e pode causar envelhecimento da pele e risco de câncer. Só que no caso da LUZ NEGRA, a emissão é de UVA próxima ao espectro visível, o que não causa mal a saúde.  Radiações Não ionizantes da NR 15 no item 3, do Anexo 7 – Portaria 3214/78 do MTE, diz o seguinte: As atividades ou operações que exponham os trabalhadores às radiações da luz negra (ultravioleta na faixa – 400- 320 nanômetros) não serão consideradas insalubres. http://www.expedicaovida.com.br/como-funciona-a-luz-negra-ela-faz-mal-a-saude/</p>
-
-  <form>
-    <div class="form-group">
-      <label for="usr">Nome:</label>
-      <input type="text" class="form-control" id="usr">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Idade:</label>
-      <input type="password" class="form-control" id="pwd">
-    </div>
-  </form>
-<div ng-app="">
- 
-<p>Coloque seu nome:</p>
-<p>Nome : <input type="text" ng-model="name" placeholder="Enter name here"></p>
-<h1>Oi {{name}}</h1>
-<h1>te espero lá!!!</h1>
-<h1>Beijos</h1>
-
-</div>
 
 </div>
 
