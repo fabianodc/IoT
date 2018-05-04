@@ -12,7 +12,7 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 <script> 
-  var url = 'http://35.229.57.208:3000/temperatura';//criou a variável url
+  var url = 'http://35.229.57.208:3000/luisa';//criou a variável url
   angular.module('iot', []).controller(//chama o modulo angular iot que controla sensor
       'sensor',//
       function($scope, $http) {//cria um função scope e http
@@ -144,7 +144,7 @@
 <h1> -
 </h1>
 
-<h1>Conto com sua presença, mas se não puder comparecer, nos comunique, por favor. 
+<h1>Conto com sua presença, mas se NÃO puder comparecer, nos comunique, por favor. 
 É só deixar seu nome aqui em baixo e clicar em enviar.</h1>
 <!-- Os parâmetros criados acima são recebidos aqui -->
 <body ng-app="iot" ng-controller="sensor" ng-init="GetData()">
