@@ -44,6 +44,8 @@ router.get('/', function(req, res) {
 	});
 });
 
+// Começando com a temperatura
+
 //GET /temperatura
 router.route('/temperatura').get(function(req, res) {
 	Temperatura.find(function(err, temperatura) {
@@ -113,6 +115,10 @@ router.route('/temperatura/:id').delete(function(req, res) {
 	});
 	console.log('DELETE /temperatura/:id');
 });
+
+
+// Começando a humidade
+
 //GET /humidade
 router.route('/humidade').get(function(req, res) {
 	Humidade.find(function(err, humidade) {
@@ -182,11 +188,6 @@ router.route('/humidade/:id').delete(function(req, res) {
 	});
 	console.log('DELETE /humidade/:id');
 });
-
-app.use('/', router);
-
-app.listen(3000);
-console.log('Servidor executando.');
 
 //GET /sensor1
 router.route('/sensor1').get(function(req, res) {
@@ -678,3 +679,7 @@ router.route('/luisa/:id').delete(function(req, res) {
 	console.log('DELETE /luisa/:id');
 });
 
+app.use('/', router);
+
+app.listen(3000);
+console.log('Servidor executando.');
