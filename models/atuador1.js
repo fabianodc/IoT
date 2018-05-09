@@ -17,5 +17,5 @@ var Atuador1Schema = new Schema({
 autoIncrement.initialize(mongoose.connection);
 atuador1Schema.plugin(autoIncrement.plugin, 'atuador1');
 atuador1Schema.plugin(mongooseApiQuery); 
-module.exports = mongoose.model('atuador1', atuador1Schema);
+module.exports = mongoose.model('atuador1', Atuador1Schema);
 
