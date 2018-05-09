@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment'); 
 var mongooseApiQuery = require('mongoose-api-query'); 
 
-var sensor1Schema = new Schema({
+var Sensor1Schema = new Schema({
     time: String,
     valor: String
 });
@@ -17,5 +17,5 @@ var sensor1Schema = new Schema({
 autoIncrement.initialize(mongoose.connection);
 sensor1Schema.plugin(autoIncrement.plugin, 'sensor1');
 sensor1Schema.plugin(mongooseApiQuery); 
-module.exports = mongoose.model('sensor1', sensor1Schema);
+module.exports = mongoose.model('sensor1', Sensor1Schema);
 
