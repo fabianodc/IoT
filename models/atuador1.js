@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment'); 
 var mongooseApiQuery = require('mongoose-api-query'); 
 
-var atuador1Schema = new Schema({
+var Atuador1Schema = new Schema({
     time: String,
     valor: String
 });
