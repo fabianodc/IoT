@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment'); 
 var mongooseApiQuery = require('mongoose-api-query'); 
 
-var atuador2Schema = new Schema({
+var Atuador2Schema = new Schema({
     time: String,
     valor: String
 });
@@ -17,5 +17,5 @@ var atuador2Schema = new Schema({
 autoIncrement.initialize(mongoose.connection);
 atuador2Schema.plugin(autoIncrement.plugin, 'atuador2');
 atuador2Schema.plugin(mongooseApiQuery); 
-module.exports = mongoose.model('atuador2', atuador2Schema);
+module.exports = mongoose.model('atuador2', Atuador2Schema);
 
