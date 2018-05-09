@@ -1,7 +1,7 @@
 /** Pós Graduação Internet das Coisas - CEFET-MG
 	Disciplina: Programação para Sistemas de Computação
 	Exemplo prático de RESTFul com NodeJS e MongoDB
-	Modelo Humidade
+	Modelo Umidade
  */
  
 var mongoose = require('mongoose');
@@ -15,7 +15,7 @@ var UmidadeSchema = new Schema({
 });
 
 autoIncrement.initialize(mongoose.connection);
-HumidadeSchema.plugin(autoIncrement.plugin, 'humidade');
-HumidadeSchema.plugin(mongooseApiQuery); 
+UmidadeSchema.plugin(autoIncrement.plugin, 'humidade');
+UmidadeSchema.plugin(mongooseApiQuery); 
 module.exports = mongoose.model('umidade', UmidadeSchema);
 
