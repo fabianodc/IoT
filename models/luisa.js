@@ -15,7 +15,7 @@ var LuisaSchema = new Schema({
 });
 
 autoIncrement.initialize(mongoose.connection);
-luisaSchema.plugin(autoIncrement.plugin, 'luisa');
-luisaSchema.plugin(mongooseApiQuery); 
+LuisaSchema.plugin(autoIncrement.plugin, 'luisa');
+LuisaSchema.plugin(mongooseApiQuery); 
 module.exports = mongoose.model('luisa', LuisaSchema);
 
