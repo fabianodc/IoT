@@ -15,7 +15,7 @@ var Sensor3Schema = new Schema({
 });
 
 autoIncrement.initialize(mongoose.connection);
-sensor3Schema.plugin(autoIncrement.plugin, 'sensor3');
-sensor3Schema.plugin(mongooseApiQuery); 
+Sensor3Schema.plugin(autoIncrement.plugin, 'sensor3');
+Sensor3Schema.plugin(mongooseApiQuery); 
 module.exports = mongoose.model('sensor3', Sensor3Schema);
 
