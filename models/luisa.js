@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment'); 
 var mongooseApiQuery = require('mongoose-api-query'); 
 
-var luisaSchema = new Schema({
+var LuisaSchema = new Schema({
     time: String,
     valor: String
 });
@@ -17,5 +17,5 @@ var luisaSchema = new Schema({
 autoIncrement.initialize(mongoose.connection);
 luisaSchema.plugin(autoIncrement.plugin, 'luisa');
 luisaSchema.plugin(mongooseApiQuery); 
-module.exports = mongoose.model('luisa', luisaSchema);
+module.exports = mongoose.model('luisa', LuisaSchema);
 
