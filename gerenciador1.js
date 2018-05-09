@@ -8,6 +8,14 @@ var express = require('express');
 var cors = require('cors'); 
 var bodyParser = require('body-parser'); 
 var Temperatura = require('./models/temperatura'); // Modelos definidos
+var Umidade = require('./models/umidade'); // Modelos definidos
+var Sensor1 = require('./models/sensor1'); // Modelos definidos
+var Atuador1 = require('./models/atuador1'); // Modelos definidos
+var Sensor2 = require('./models/sensor2'); // Modelos definidos
+var Atuador2 = require('./models/atuador2'); // Modelos definidos
+var Sensor3 = require('./models/sensor3'); // Modelos definidos
+var Atuador3 = require('./models/atuador3'); // Modelos definidos
+var Luisa = require('./models/luisa'); // Modelos definidos
 var mongoose = require('mongoose');
 var mqtt = require('mqtt');
 
@@ -37,6 +45,14 @@ client.on('message', function (topic, message) { //aguarda mensagem do tópico a
 	  var message_topic = topic.toString();
 	  
 	  var temperatura = new Temperatura();
+	  var umidade = new Umidade();
+	  var sensor1 = new Sensor1();
+	  var atuador1 = new Atuador1();
+  	  var sensor2 = new Sensor2();
+	  var atuador2 = new Atuador2();
+  	  var sensor3 = new Sensor3();
+	  var atuador3 = new Atuador3();
+  	  var luisa = new Luisa();
 
 	  var d = new Date();
 	 
