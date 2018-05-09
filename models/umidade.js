@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment'); 
 var mongooseApiQuery = require('mongoose-api-query'); 
 
-var HumidadeSchema = new Schema({
+var UmidadeSchema = new Schema({
     time: String,
     valor: String
 });
@@ -17,5 +17,5 @@ var HumidadeSchema = new Schema({
 autoIncrement.initialize(mongoose.connection);
 HumidadeSchema.plugin(autoIncrement.plugin, 'humidade');
 HumidadeSchema.plugin(mongooseApiQuery); 
-module.exports = mongoose.model('humidade', HumidadeSchema);
+module.exports = mongoose.model('umidade', UmidadeSchema);
 
