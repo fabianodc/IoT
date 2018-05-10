@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Apresentação Trabalho</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<!-- Plotly -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script>
+  var url = 'http://35.229.57.208:3000/sensor1';
+  angular.module('iot', []).controller(
+      'sensor',
+      function($scope, $http) {
+        $scope.GetData = function() {
+          $http.get(url).then(function(response) {
+            $scope.sensor = response.data;
+            $scope.Plot(response.data);
+          });
+
+        };
+
+        $scope.SendData = function() {
+          var d = new Date();
+          var data = {
+            time : d.getFullYear() + "-"
+                + ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+                + ("00" + (d.getDate())).slice(-2) + " "
+                + d.toLocaleTimeString(),
+            valor : $scope.valor
+          };
+
+          $http.post(url, data).then(function(response) {
+            $scope.showSuccess = true;
+            $scope.GetData();
+          }, function(response) {
+            $scope.showError = true;
+          });
+        };
+
+        $scope.Plot = function(data) {
+          var x = [], y = [];
+
+          data.forEach(function(item) {
+            x.push(item.time);
+            y.push(item.valor);
+          });
+
+          var charData = [ {
+            x : x,
+            y : y,
+            mode : 'lines+markers',
+            line : {
+              color : '#80CAF6'
+            }
+          } ];
+
+          var chart = document.getElementById('chart');
+
+          Plotly.newPlot(chart, charData);
+        };
+
+      });
+</script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float: left;
+  width: 20%;
+}
+.menuitem {
+  padding: 8px;
+  margin-top: 7px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.right {
+  background-color: lightblue;
+  float: left;
+  width: 20%;
+  padding: 10px 15px;
+  margin-top: 7px;
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;">
+
+<div style="background-color:#f1f1f1;padding:15px;">
+  <h1>Programação para Sistemas de Computação</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <div class="menuitem">Sensor de Temperatura</div>
+    <div class="menuitem">Sensor de Umidade</div>
+    <div class="menuitem">Atuador Rele de Estado Sólido</div>
+    <div class="menuitem">Micro Servo</div>
+  </div>
+
+</head>
+<body>
+
+<div class="container">
+  <h2>O trabalho apresentar sensores e atuadores interligados</h2>
+  <p>Em primeiro lugar o sensor de Umidade de Temperatura</p>
+  
+  <h2>Sensor de DTH11</h2>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/uzcL80nT5cU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+  <h1>Componente DHT11</h1>
+<img src="img_dth11.jpg" alt="Sensor" style="width:100%">
+<p>   Mateus e Luisa 
+</p>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="valor">Valor:</label> <input type="number"
+            class="form-control" name="valor" ng-model="valor"
+            placeholder="informe o valor" required />
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="SendData()">Enviar</button>
+        <p></p>
+        <div data-ng-show="showSuccess" class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Enviado
+            com Sucesso!</strong>
+        </div>
+        <div data-ng-show="showError" class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Erro
+            ao Enviar!</strong>
+        </div>
+        <p></p>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>id</th>
+              <th>time</th>
+              <th>valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="s in sensor">
+              <td>{{s._id}}</td>
+              <td>{{s.time}}</td>
+              <td>{{s.valor}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-8">
+        <div id="chart" class="responsive-plot"></div>
+      </div>
+    </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+
+<h2> Se quiser testar o recebimento de dados pelo banco de dados</h2>
+ 
+<!-- Os parâmetros criados acima são recebidos aqui -->
+<body ng-app="iot" ng-controller="sensor" ng-init="GetData()">
+  <!-- Criar container -->
+  <div class="container">
+    <!-- alinhamento ao centro -->
+    <div class="row">
+      <!-- Criação de 4 colunas -->
+      <div class="col-sm-4">
+        <!-- Criação de formulário -->
+        <div class="form-group">
+          <!-- Criação de camadas -->
+          <label for="valor">Nome:</label> <input type="name"
+            class="form-control" name="valor" ng-model="valor"
+            placeholder="informe o valor da umidade" required />
+            <!-- trocar o termo type por name -->
+            <!-- criação do botão enviando para o SendData-->
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="SendData()">Enviar</button>
+        <p></p>
+        <!-- se conseguir enviar - afirmar sucesso -->
+        <div data-ng-show="showSuccess" class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Enviado
+            com Sucesso!</strong>
+        </div>
+        <!-- se não conseguir enviar - afirmar erro -->
+        <div data-ng-show="showError" class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Erro
+            ao Enviar!</strong>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</div>
+
+</div>
+
+
+<h1> -
+</h1>
+
+<h3>Especificações:
+
+     Tamanho: 28 x 12 x 10 mm
+     Chip principal: sensor de temperatura e umidade DHT11
+     Tensão de trabalho: DC 5 V
+     Faixa de medição de umidade: 20-90% RH
+     Precisão de medição de umidade: + / - 5% RH
+     Precisão da medição de temperatura: mais ou menos 2 ℃
+     Faixa de medição de temperatura: 0-60 ℃
+     Saída de sinal digital.</h3>
+
+      
+      <p>O Sensor de temperatura e umidadeDHT11 é um dispositivo de muita praticidade e muito útil, seu design simples e compacto nos da uma ampla variedade de possíveis aplicações desde simples relógios até grandes projetos de automação residencial (Domótica).Esse projeto teve como base especificamente a necessidade de alguém medir a temperatura e umidade de certo ponto da casa ou ambiente. Outros módulos podem ser usados na implementação de um projeto um pouco mais arrojado, desde adicionar uma tela display LCD até um Ethernet Shield e enviar as informações de temperatura e umidade para um servidor web, por e-mail ou até mesmo para seu smartphone.</p>
+
+
+</body>
+</html>
