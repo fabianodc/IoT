@@ -52,14 +52,6 @@ client.on('message', function (topic, message) { //aguarda mensagem do tópico a
 	  var message_topic = topic.toString();
 	  
 	  var temperatura = new Temperatura();
-	  var umidade = new Umidade();
-	  var sensor1 = new Sensor1();
-	  var atuador1 = new Atuador1();
-  	  var sensor2 = new Sensor2();
-	  var atuador2 = new Atuador2();
-  	  var sensor3 = new Sensor3();
-	  var atuador3 = new Atuador3();
-  	  var luisa = new Luisa();
 
 	  var d = new Date();
 	 
@@ -71,6 +63,32 @@ client.on('message', function (topic, message) { //aguarda mensagem do tópico a
 	  temperatura.valor = payload;
 
 		temperatura.save(function(error) { // insere no db
+			if (error)
+				console.log(error);
+
+			console.log("Inserido com Sucesso!")
+		});
+	
+});
+
+client.on('message', function (topic1, message) { //aguarda mensagem do tópico assinado MQTT 
+	  console.log(topic1.toString());
+	  console.log(message.toString());
+	  var payload       = message.toString();
+	  var message_topic1 = topic1.toString();
+	  
+	  var umidade = new Umidade();
+
+	  var d = new Date();
+	 
+	  Umidade.time = d.getFullYear() + "-"
+		+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+		+ ("00" + (d.getDate())).slice(-2) + " "
+		+ d.toLocaleTimeString();
+	 
+	  umidade.valor = payload;
+
+		umidade.save(function(error) { // insere no db
 			if (error)
 				console.log(error);
 
