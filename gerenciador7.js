@@ -45,9 +45,10 @@ client.on('connect', function () {
    	 client.subscribe('topic8-iot-cefetmg'); //conecta e assina o tópico MQTT
 });
 
-client.on('message', function (topic, message,sel) { //aguarda mensagem do tópico assinado MQTT 
+client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
 	
 	  console.log(topic.toString());
+	  if(topic.toString()=='topic-iot-cefetmg'){
 	  console.log(message.toString());
 	  var payload       = message.toString();
 	  var message_topic = topic.toString();
@@ -68,13 +69,15 @@ client.on('message', function (topic, message,sel) { //aguarda mensagem do tópi
 				console.log(error);
 
 			console.log("Inserido com Sucesso!")
+
 		});
-	
+	}
 });
 
 client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
 	
 	  console.log(topic.toString());
+	  if(topic.toString()=='topic1-iot-cefetmg'){
 	  console.log(message.toString());
 	  var payload       = message.toString();
 	  var message_topic = topic.toString();
@@ -83,7 +86,7 @@ client.on('message', function (topic, message) { //aguarda mensagem do tópico a
 
 	  var d = new Date();
 	 
-	  Umidade.time = d.getFullYear() + "-"
+	  umidade.time = d.getFullYear() + "-"
 		+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
 		+ ("00" + (d.getDate())).slice(-2) + " "
 		+ d.toLocaleTimeString();
@@ -95,9 +98,185 @@ client.on('message', function (topic, message) { //aguarda mensagem do tópico a
 				console.log(error);
 
 			console.log("Inserido com Sucesso!")
+
 		});
-	
+	}
 });
+
+client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+	
+	  console.log(topic.toString());
+	  if(topic.toString()=='topic2-iot-cefetmg'){
+	  console.log(message.toString());
+	  var payload       = message.toString();
+	  var message_topic = topic.toString();
+	  
+	  var sensor1 = new Sensor1();
+
+	  var d = new Date();
+	 
+	  sensor1.time = d.getFullYear() + "-"
+		+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+		+ ("00" + (d.getDate())).slice(-2) + " "
+		+ d.toLocaleTimeString();
+	 
+	  sensor1.valor = payload;
+
+		sensor1.save(function(error) { // insere no db
+			if (error)
+				console.log(error);
+
+			console.log("Inserido com Sucesso!")
+
+		});
+	}
+});
+
+client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+	
+	  console.log(topic.toString());
+	  if(topic.toString()=='topic3-iot-cefetmg'){
+	  console.log(message.toString());
+	  var payload       = message.toString();
+	  var message_topic = topic.toString();
+	  
+	  var sensor2 = new Sensor2();
+
+	  var d = new Date();
+	 
+	  sensor2.time = d.getFullYear() + "-"
+		+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+		+ ("00" + (d.getDate())).slice(-2) + " "
+		+ d.toLocaleTimeString();
+	 
+	  sensor2.valor = payload;
+
+		sensor2.save(function(error) { // insere no db
+			if (error)
+				console.log(error);
+
+			console.log("Inserido com Sucesso!")
+
+		});
+	}
+});
+
+client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+	
+	  console.log(topic.toString());
+	  if(topic.toString()=='topic4-iot-cefetmg'){
+	  console.log(message.toString());
+	  var payload       = message.toString();
+	  var message_topic = topic.toString();
+	  
+	  var sensor3 = new Sensor3();
+
+	  var d = new Date();
+	 
+	  sensor3.time = d.getFullYear() + "-"
+		+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+		+ ("00" + (d.getDate())).slice(-2) + " "
+		+ d.toLocaleTimeString();
+	 
+	  sensor3.valor = payload;
+
+		sensor3.save(function(error) { // insere no db
+			if (error)
+				console.log(error);
+
+			console.log("Inserido com Sucesso!")
+
+		});
+	}
+});
+
+client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+	
+	  console.log(topic.toString());
+	  if(topic.toString()=='topic5-iot-cefetmg'){
+	  console.log(message.toString());
+	  var payload       = message.toString();
+	  var message_topic = topic.toString();
+	  
+	  var atuador1 = new Atuador1();
+
+	  var d = new Date();
+	 
+	  atuador1.time = d.getFullYear() + "-"
+		+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+		+ ("00" + (d.getDate())).slice(-2) + " "
+		+ d.toLocaleTimeString();
+	 
+	  atuador1.valor = payload;
+
+		atuador1.save(function(error) { // insere no db
+			if (error)
+				console.log(error);
+
+			console.log("Inserido com Sucesso!")
+
+		});
+	}
+});
+
+client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+	
+	  console.log(topic.toString());
+	  if(topic.toString()=='topic6-iot-cefetmg'){
+	  console.log(message.toString());
+	  var payload       = message.toString();
+	  var message_topic = topic.toString();
+	  
+	  var atuador2 = new Atuador2();
+
+	  var d = new Date();
+	 
+	  atuador2.time = d.getFullYear() + "-"
+		+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+		+ ("00" + (d.getDate())).slice(-2) + " "
+		+ d.toLocaleTimeString();
+	 
+	  atuador2.valor = payload;
+
+		atuador2.save(function(error) { // insere no db
+			if (error)
+				console.log(error);
+
+			console.log("Inserido com Sucesso!")
+
+		});
+	}
+});
+
+client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+	
+	  console.log(topic.toString());
+	  if(topic.toString()=='topic7-iot-cefetmg'){
+	  console.log(message.toString());
+	  var payload       = message.toString();
+	  var message_topic = topic.toString();
+	  
+	  var atuador3 = new Atuador3();
+
+	  var d = new Date();
+	 
+	  atuador3.time = d.getFullYear() + "-"
+		+ ("00" + (d.getMonth() + 1)).slice(-2) + "-"
+		+ ("00" + (d.getDate())).slice(-2) + " "
+		+ d.toLocaleTimeString();
+	 
+	  atuador3.valor = payload;
+
+		atuador3.save(function(error) { // insere no db
+			if (error)
+				console.log(error);
+
+			console.log("Inserido com Sucesso!")
+
+		});
+	}
+});
+
 
 
 /* Rota para acompanhar as requisições */
