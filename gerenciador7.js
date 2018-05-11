@@ -45,7 +45,7 @@ client.on('connect', function () {
    	 client.subscribe('topic8-iot-cefetmg'); //conecta e assina o tópico MQTT
 });
 
-if (topic-iot-cefetmg=true){
+if (topic-iot-cefetmg){
 
 client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
 	  console.log(topic.toString());
@@ -73,7 +73,7 @@ client.on('message', function (topic, message) { //aguarda mensagem do tópico a
 	
 });
 }
-else if (topic1-iot-cefetmg=true){
+else if (topic1-iot-cefetmg){
 
 client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
 	  console.log(topic.toString());
