@@ -46,7 +46,7 @@ client.on('connect', function () {
 });
 
 client.on('message', function (topic, message,sel) { //aguarda mensagem do tópico assinado MQTT 
-	if(sel==0){
+	
 	  console.log(topic.toString());
 	  console.log(message.toString());
 	  var payload       = message.toString();
@@ -69,11 +69,11 @@ client.on('message', function (topic, message,sel) { //aguarda mensagem do tópi
 
 			console.log("Inserido com Sucesso!")
 		});
-	}
+	
 });
 
-client.on('message', function (topic, message,sel) { //aguarda mensagem do tópico assinado MQTT 
-	if(sel==0){
+client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+	
 	  console.log(topic.toString());
 	  console.log(message.toString());
 	  var payload       = message.toString();
@@ -96,7 +96,7 @@ client.on('message', function (topic, message,sel) { //aguarda mensagem do tópi
 
 			console.log("Inserido com Sucesso!")
 		});
-	}
+	
 });
 
 
