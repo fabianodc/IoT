@@ -45,9 +45,8 @@ client.on('connect', function () {
    	 client.subscribe('topic8-iot-cefetmg'); //conecta e assina o tópico MQTT
 });
 
-if (topic-iot-cefetmg){
-
-client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+client.on('message', function (topic, message,sel) { //aguarda mensagem do tópico assinado MQTT 
+	if(sel==0){
 	  console.log(topic.toString());
 	  console.log(message.toString());
 	  var payload       = message.toString();
@@ -70,12 +69,11 @@ client.on('message', function (topic, message) { //aguarda mensagem do tópico a
 
 			console.log("Inserido com Sucesso!")
 		});
-	
+	}
 });
-}
-else if (topic1-iot-cefetmg){
 
-client.on('message', function (topic, message) { //aguarda mensagem do tópico assinado MQTT 
+client.on('message', function (topic, message,sel) { //aguarda mensagem do tópico assinado MQTT 
+	if(sel==0){
 	  console.log(topic.toString());
 	  console.log(message.toString());
 	  var payload       = message.toString();
@@ -98,10 +96,10 @@ client.on('message', function (topic, message) { //aguarda mensagem do tópico a
 
 			console.log("Inserido com Sucesso!")
 		});
-	
+	}
 });
 
-}
+
 /* Rota para acompanhar as requisições */
 router.use(function(req, res, next) {
 	console.log('Entrou na rota ');
