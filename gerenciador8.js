@@ -53,7 +53,7 @@ require('mongoose-middleware').initialize(mongoose);
 
 mongoose.connect("mongodb://localhost:27017/sensor");//criar outro user
 
-mongoose.connect("mongodb://localhost:27017/user");//com isso irá se criar um novo banco
+//mongoose.connect("mongodb://localhost:27017/user");//com isso irá se criar um novo banco
 
 var client = mqtt.connect('tcp://localhost'); //inicia o mqtt
 
