@@ -335,6 +335,7 @@ router.get('/', function(req, res) {//app.get
 
 //GET /temperatura
 router.route('/temperatura').get(function(req, res) {
+	if (req.session.auth==true) {  										//criei a validação aqui
 	var limit = parseInt(req.query._limit) || 20;
 	var valor = req.query.valor || {$gte: 0};
 	var sort = parseInt(req.query._sort) || -1;
@@ -349,18 +350,18 @@ router.route('/temperatura').get(function(req, res) {
 
 		res.json(temperatura);
 	});
-	console.log('GET /temperatura');
+	console.log('GET /temperatura');}
 });
 
 router.route('/temperatura/q').get(function(req, res) {
-	if (req.session.auth==true) {  										//criei a validação aqui
+	
 	Temperatura.apiQuery(req.query).exec(function(err, temperatura) {
 		if (err)
 			res.send(err);
 
 		res.json(temperatura);
 	});
-	console.log('GET /temperatura/q');}
+	console.log('GET /temperatura/q');
 });
 
 //GET /temperatura/recente
