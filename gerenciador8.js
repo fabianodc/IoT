@@ -350,7 +350,10 @@ router.route('/temperatura').get(function(req, res) {
 
 		res.json(temperatura);
 	});
-	console.log('GET /temperatura');}
+	console.log('GET /temperatura');
+	  } else {
+		res.end('try again');
+  }
 });
 
 router.route('/temperatura/q').get(function(req, res) {
