@@ -13,7 +13,7 @@ app.use(session({
 }))
 
 app.get('/', function (req, res) {
-  if(req.session.auth==true) {
+ // if(req.session.auth==true) {
 	  if (req.session.count) {
 		req.session.count++
 		res.setHeader('Content-Type', 'text/html')
@@ -24,9 +24,9 @@ app.get('/', function (req, res) {
 		req.session.count = 1
 		res.end('welcome to the session demo. refresh!')
 	  }
-  } else {
-	    res.send('you must login first');
-  }
+ // } else {
+	//    res.send('you must login first');
+ // }
 });
 
 app.post('/login', upload.array(), function (req, res, next) {
