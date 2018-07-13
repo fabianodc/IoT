@@ -31,7 +31,7 @@ var upload = multer();						//até aqui
 var fs = require('fs')
 var path = require('path')
 var PORT = 3000  // troque p/ 8883 quando usar SSL/TLS
-var HOST = 'localhost'
+var HOST = '35.229.57.208'
 
 var options = {
   port: PORT,
