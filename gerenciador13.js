@@ -30,7 +30,7 @@ var upload = multer();						//até aqui
 //var mqtt = require('mqtt')
 var fs = require('fs')
 var path = require('path')
-var PORT = 1883  // troque p/ 8883 quando usar SSL/TLS
+var PORT = 3000  // troque p/ 8883 quando usar SSL/TLS
 var HOST = 'localhost'
 
 var options = {
