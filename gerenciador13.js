@@ -27,7 +27,7 @@ var upload = multer();						//até aqui
 
 'use strict'
 
-var mqtt = require('mqtt')
+//var mqtt = require('mqtt')
 var fs = require('fs')
 var path = require('path')
 var PORT = 1883  // troque p/ 8883 quando usar SSL/TLS
